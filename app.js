@@ -46,13 +46,15 @@ io.sockets.on('connection', function (socket) {
 
   console.log("Co nguoi connect");
   
-  socket.emit('KetNoiThanhCong', "Thanh cong");
-  
+  socket.emit('sim900', "Thanh cong");
 
   socket.on('disconnect',function(data){
-  console.log('disconnected')
+  console.log('disconnected');
   }); 
 
+  socket.on('tintuweb',function(data){
+  console.log(data);
+  }); 
  
 });
 
