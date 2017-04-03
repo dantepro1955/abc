@@ -7,6 +7,27 @@ var fs = require("fs");
 var PORT = process.env.PORT;
 
 server.listen(PORT);
+//***
+server.on("connection",function(socket){
+    //var remoteAddress = socket.remoteAddress + ":" +socket.remotePort;
+
+	  console.log("connect + %s",socket.remotePort );
+	  socket.on("data",function(data){
+
+                 console.log("data:%s|leng=%d",data,data.length);
+                 io.sockets.emit('sim900', data.toString());
+		});
+	
+		socket.on("close",function(){
+		  console.log("closed");
+		});
+		
+		socket.on("error",function(){
+		  console.log("error");
+		});
+}
+);
+//***
 
 app.get("/", function(req, res){
 	res.sendFile(__dirname + "/index.html");
