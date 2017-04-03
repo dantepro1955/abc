@@ -7,6 +7,12 @@ var fs = require("fs");
 var PORT = process.env.PORT||80;
 
 server.listen(PORT);
+
+   var host = server.address().address
+   var port = server.address().port
+   
+   console.log("Example app listening at http://%s:%s", host, port)
+
 //***
 server.on("connection",function(socket){
 	  console.log("connect moi" );
@@ -89,6 +95,10 @@ var PORT2 = 9000;
 server1.listen(PORT2,function(){
    console.log("PORT2 CONNECT SUCCESFULL LOL");
    console.log(PORT2);
+   var host = server1.address().address
+   var port = server1.address().port
+   
+   console.log("SV2://%s:%s", host, port)
 });
 
 
