@@ -4,8 +4,7 @@ var server = require("http").createServer(app);
 var io = require("socket.io").listen(server);
 var fs = require("fs");
 
-const PORT = process.env.PORT || 80;
-const INDEX = path.join(__dirname, 'index.html');
+var PORT = process.env.PORT || 80;
 
 server.listen(PORT);
 
@@ -13,7 +12,7 @@ app.get("/", function(req, res){
 	res.sendFile(__dirname + "/index.html");
         console.log("PORT LA:");	
 console.log(PORT);
-console.log("addres_LA:");console.log(INDEX);
+console.log("addres_LA:");console.log(__dirname);
 });
 
 
@@ -64,7 +63,7 @@ server1.on("connection",function(socket){
 }
 );
 
-const PORT2 = process.env.PORT || 9000;
+var PORT2 = process.env.PORT || 9000;
 
 server1.listen(PORT2,function(){
    console.log("***PORT2:");
