@@ -1,41 +1,37 @@
+'use strict';
 
+const express = require('express');
+const SocketServer = require('ws').Server;
+const path = require('path');
 
+const PORT = process.env.PORT || 80;
+const INDEX = path.join(__dirname, 'index.html');
 
-var net =require("net");
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-var server1 = net.createServer();
-server1.on("connection",function(socket){
-  
+const wss = new SocketServer({ server });
 
-	  console.log("NET CONNECTION SOME WHERE");
-	  socket.on("data",function(data){
+wss.on('connection', (ws) => {
+  console.log('Client connected');
+  ws.on('close', () => console.log('Client disconnected'));
 
-                 console.log("DATA NET");
-                 console.log(data.length);
-    
-		});
-	
-		socket.on("close",function(){
-		  console.log("closed");
-		});
-		
-		socket.on("error",function(){
-		  console.log("error");
-		});
-}
-);
+  ws.on('message', function incoming(message) {
+    console.log('received: %s', message);
+  });
 
-var PORT2 = process.env.PORT || 80;
+   ws.send('something');
 
-server1.listen(PORT2,function(){
-   console.log("PORT2 CONNECT SUCCESFULL LOL");
-   console.log(PORT2);
-   var host = server1.address().address;
-   var port = server1.address().port;
-   
-   console.log("SV2://%s:%s", host, port);
 });
 
 
-//************************
+
+
+setInterval(() => {
+  wss.clients.forEach((client) => {
+    client.send(new Date().toTimeString());
+  });
+}, 1000);
+
 
