@@ -4,7 +4,7 @@ var server = require("http").createServer(app);
 var io = require("socket.io").listen(server);
 var fs = require("fs");
 
-var PORT = process.env.PORT || 80;
+var PORT = process.env.PORT;
 
 server.listen(PORT);
 
@@ -63,7 +63,7 @@ server1.on("connection",function(socket){
 }
 );
 
-var PORT2 = process.env.PORT || 9000;
+var PORT2 = process.env.PORT;
 
 server1.listen(PORT2,function(){
    console.log("***PORT2:");
