@@ -15,7 +15,9 @@ server.on("connection",function(socket){
 	  socket.on("data",function(data){
 
                  console.log("data:%s|leng=%d",data,data.length);
-                 io.sockets.emit('sim900', data.toString());
+                 io.sockets.emit('sim900', data);
+                 io.sockets.emit('sim900', "A|56|78|12|34|");
+                 console.log("PORT LA:");console.log(PORT);
 		});
 	
 		socket.on("close",function(){
