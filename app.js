@@ -1,37 +1,31 @@
-'use strict';
+var net =require("net");
 
-const express = require('express');
-const SocketServer = require('ws').Server;
-const path = require('path');
+var server1 = net.createServer();
+server1.on("connection",function(socket){
 
-const PORT = process.env.PORT || 80;
-const INDEX = path.join(__dirname, 'index.html');
+	  console.log("connect from %s",socket.remotePort );
+	  socket.on("data",function(data){
 
-const server = express()
-  .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+                 console.log("data:%s|leng=%d",data,data.length);
 
-const wss = new SocketServer({ server });
 
-wss.on('connection', (ws) => {
-  console.log('Client connected');
-  ws.on('close', () => console.log('Client disconnected'));
+		});
+	
+		socket.on("close",function(){
+		  console.log("closed");
+		});
+		
+		socket.on("error",function(){
+		  console.log("error");
+		});
+}
+);
 
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
-  });
 
-   ws.send('something');
-
+server1.listen(process.env.PORT ||80,function(){
+   console.log("listen");
 });
 
 
-
-
-setInterval(() => {
-  wss.clients.forEach((client) => {
-    client.send(new Date().toTimeString());
-  });
-}, 1000);
 
 
