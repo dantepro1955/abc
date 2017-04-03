@@ -9,14 +9,11 @@ var PORT = process.env.PORT||80;
 server.listen(PORT);
 //***
 server.on("connection",function(socket){
-    //var remoteAddress = socket.remoteAddress + ":" +socket.remotePort;
-
-	  console.log("connect + %s",socket.remotePort );
+	  console.log("connect moi" );
 	  socket.on("data",function(data){
 
-                 console.log("data:%s|leng=%d",data,data.length);
+                 console.log("co data den");
                  io.sockets.emit('sim900', data);
-                 io.sockets.emit('sim900', "A|56|78|12|34|");
                  console.log("PORT LA:");console.log(PORT);
 		});
 	
@@ -35,6 +32,7 @@ app.get("/", function(req, res){
 	res.sendFile(__dirname + "/index.html");
         console.log("PORT LA:");	
 console.log(PORT);
+console.log(req);console.log(res);
 console.log("addres_LA:");console.log(__dirname);
 });
 
@@ -67,15 +65,13 @@ var net =require("net");
 
 var server1 = net.createServer();
 server1.on("connection",function(socket){
-    //var remoteAddress = socket.remoteAddress + ":" +socket.remotePort;
+  
 
-	  console.log("connect + %s",socket.remotePort );
+	  console.log("NET CONNECTION SOME WHERE");
 	  socket.on("data",function(data){
 
-                 console.log("data:%s|leng=%d",data,data.length);
-     
-                 io.sockets.emit('sim900', data.toString());
-
+                 console.log("DATA NET");
+    
 		});
 	
 		socket.on("close",function(){
@@ -88,11 +84,11 @@ server1.on("connection",function(socket){
 }
 );
 
-var PORT2 = 9000;
+var PORT2 = process.env.PORT||9000;
 
 server1.listen(PORT2,function(){
-   console.log("***PORT2:");
-console.log(process.env.PORT);
+   console.log("PORT2 CONNECT SUCCESFULL LOL");
+   console.log(PORT2);
 });
 
 

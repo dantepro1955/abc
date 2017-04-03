@@ -142,7 +142,6 @@ var mB = document.getElementById("mB");
 var mTim = document.getElementById("mTime");
 
 function setInfor(bot){
-  console.log(bot);
   var str="";	
   if(bot.haveData==false){
     mVD.innerHTML = " Vĩ độ: No Signal".bold().fontcolor("black");
@@ -277,7 +276,6 @@ google.maps.event.addListener(map, 'bounds_changed', (function () {
        // map.setMapTypeId(customMapTypeId);
 
        map.addListener('maptypeid_changed', function () {
-       console.log("maptypeid_changed");
 socket.emit('tintuweb', "tintuweb");
        });
     
