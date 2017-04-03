@@ -21,9 +21,10 @@ server1.on("connection",function(socket){
 }
 );
 
+var port = process.env.PORT||80;
+server1.listen(port,function(){
+   console.log("listen on: %d",port);
 
-server1.listen(process.env.PORT ||80,function(){
-   console.log("listen");
 });
 
 
