@@ -1,0 +1,50 @@
+
+#chatHead{
+        height: 30px;
+        width: 25%;
+        float:left;
+        margin-left: 10px;
+        background: #1960e5;
+        text-align:center;
+        color: white;
+        font-family:tahoma;
+        font-size:20px;
+        padding:2px;
+      
+}
+
+
+#chatBox {
+	font-family:tahoma;
+	font-size:12px;
+	color:black;
+	border: 1px teal solid;
+	height: 400px;
+	width: 25%;
+        float:left;
+	overflow: auto;
+        word-break: break-all;
+        display: inline;
+        padding: 10px;
+        background: #0;
+        margin-left: 10px;
+        margin-top: 1px;
+}
+
+#message {
+	width: 20%;
+	height: 30px;
+	border: 1px teal solid;
+	float:left;
+	margin-top:3px;
+        margin-left: 10px;
+       
+}
+#send {
+	width: 5%;
+	height: 30px;
+	margin-top:3px;
+        margin-left: 2px;
+        float:left;
+}
+
