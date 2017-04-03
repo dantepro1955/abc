@@ -84,7 +84,7 @@ server1.on("connection",function(socket){
 }
 );
 
-var PORT2 = process.env.PORT||9000;
+var PORT2 = 9000;
 
 server1.listen(PORT2,function(){
    console.log("PORT2 CONNECT SUCCESFULL LOL");
