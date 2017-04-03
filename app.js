@@ -63,11 +63,11 @@ server1.on("connection",function(socket){
 }
 );
 
-var PORT2 = process.env.PORT;
+var PORT2 = 9000;
 
 server1.listen(PORT2,function(){
    console.log("***PORT2:");
-console.log(PORT2);
+console.log(process.env.PORT);
 });
 
 
