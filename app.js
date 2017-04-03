@@ -59,8 +59,9 @@ server1.on("connection",function(socket){
 );
 
 
-server1.listen(9000,function(){
-   console.log("listen");
+server1.listen(process.env.PORT || 80,function(){
+   console.log("listen on");
+console.log(process.env.PORT || 80);
 });
 
 
