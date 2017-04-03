@@ -4,7 +4,7 @@ var server = require("http").createServer(app);
 var io = require("socket.io").listen(server);
 var fs = require("fs");
 
-var PORT = process.env.PORT;
+var PORT = process.env.PORT||80;
 
 server.listen(PORT);
 //***
